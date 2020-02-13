@@ -23,6 +23,8 @@ public class MovieDataSynchronizer {
 	@Transactional
 	public void forceSync() {
 		//TODO: implement this to sync movie into repository
+		movieRepository.deleteAll();
+
 		List<Movie> movies = movieDataService.fetchAll()
 				.stream()
 				.map((movieData) -> new Movie(movieData.getTitle(), movieData.getCast()))
