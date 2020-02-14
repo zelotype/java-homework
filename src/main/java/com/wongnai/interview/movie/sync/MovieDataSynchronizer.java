@@ -22,7 +22,7 @@ public class MovieDataSynchronizer {
 
 	@Transactional
 	public void forceSync() {
-		//TODO: implement this to sync movie into repository
+		// Clear all data from db before an app starting up, this fix an issue when run `mvn install`
 		movieRepository.deleteAll();
 
 		List<Movie> movies = movieDataService.fetchAll()
